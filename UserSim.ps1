@@ -4,11 +4,16 @@ param
     $password
 )
 
+"Adding AutoIT_Browsing Task" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 schtasks /create /ru $username /rp $password /it /tn AutoIT_Browsing /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserBrowsing.exe /f
+"Adding AutoIT_Document Task" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 schtasks /create /ru $username /rp $password /it /tn AutoIT_Document /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserDocument.exe /f
+"Adding AutoIT_PowerShell Task" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 schtasks /create /ru $username /rp $password /it /tn AutoIT_PowerShell /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserPowerShell.exe /f
+"Adding AutoIT_Mail Task" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 schtasks /create /ru $username /rp $password /it /tn AutoIT_Mail /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserWebMail.exe /f
 
+"Setting Auto Logon User" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 $key = 'HKLM:\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon'
 Set-ItemProperty $key AutoAdminLogon 1
 Set-ItemProperty $key DefaultUserName $username
