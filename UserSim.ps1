@@ -13,6 +13,15 @@ schtasks /create /tn Start_User_Sim /sc ONLOGON /tr "schtasks /create /ru specte
 "Adding AutoIT_Mail Task" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 schtasks /create /tn Start_User_Sim /sc ONLOGON /tr "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Mail /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserWebMail.exe /f" /f
 
+
+$runonce = 'HKLM:\\\\SOFTWARE\\Microsoft\\\\Windows\\\\CurrentVersion\\\\RunOnce'
+Set-ItemProperty $runonce Test "echo text > C:\Users\Public\usersim.txt"
+Set-ItemProperty $runonce Start_User_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Document /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserDocument.exe /f"
+Set-ItemProperty $runonce Start_User_Sim_Document "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Document /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserDocument.exe /f"
+Set-ItemProperty $runonce Start_User_Sim_PowerShell "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_PowerShell /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserPowerShell.exe /f"
+Set-ItemProperty $runonce Start_User_Sim_WebMail "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Mail /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserWebMail.exe /f" 
+
+
 "Setting Auto Logon User" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 $key = 'HKLM:\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon'
 Set-ItemProperty $key AutoAdminLogon 1
