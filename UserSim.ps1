@@ -14,7 +14,7 @@ schtasks /create /tn Start_User_Sim /sc ONLOGON /tr "schtasks /create /ru specte
 schtasks /create /tn Start_User_Sim /sc ONLOGON /tr "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Mail /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserWebMail.exe /f" /f
 
 
-$runonce = 'HKLM:\\\\SOFTWARE\\Microsoft\\\\Windows\\\\CurrentVersion\\\\RunOnce'
+$runonce = 'HKLM:\\\\SOFTWARE\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run'
 Set-ItemProperty $runonce Test "echo text > C:\Users\Public\usersim.txt"
 Set-ItemProperty $runonce Start_User_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Document /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserDocument.exe /f"
 Set-ItemProperty $runonce Start_User_Sim_Document "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Document /sc MINUTE /mo 5 /tr C:\Users\Public\UserActions\UserDocument.exe /f"
