@@ -15,7 +15,7 @@ schtasks /create /tn Start_User_Sim /sc ONLOGON /tr "schtasks /create /ru specte
 
 $run = 'HKLM:\\\\SOFTWARE\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run'
 $admins = @("marilyn.adams", "aubree.jenkins", "daisy.allen", "zoey.shaw", "luis.sanders", "beverly.vargas", "sarah.wells", "melanie.gutierrez", "rosa.jordan", "eugene.sanders", "troy.williamson", "melissa.nichols", "ruben.roberts", "micheal.patterson", "kaylee.edwards", "raul.garcia", "edgar.stone", "joyce.reid", "dianne.brown", "owen.warren", "robin.armstrong", "sebastian.mitchell", "shane.patterson", "gregory.kelley", "nathan.lopez", "olivia.diaz", "adam.gonzales", "marsha.fisher", "luis.snyder", "eleanor.bates")
-if($admins -contains $test)
+if($admins -contains $username)
 { 
     Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Browsing /sc MINUTE /mo 5 /tr C:\Users\Public\AdminActions\AdminBrowsing.exe /f"
     Set-ItemProperty $run Start_Admin_Sim_Commands "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn AutoIT_Commands /sc MINUTE /mo 5 /tr C:\Users\Public\AdminActions\AdminCommands.exe /f"
