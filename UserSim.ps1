@@ -28,3 +28,5 @@ Set-ItemProperty $key AutoAdminLogon 1
 Set-ItemProperty $key DefaultUserName $username
 Set-ItemProperty $key DefaultPassword $password
 Set-ItemProperty $key DefaultDomainName 'specterpops.local' 
+
+NET LOCALGROUP "Remote Desktop Users" specterpops.local\$username /ADD
