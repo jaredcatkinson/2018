@@ -26,4 +26,4 @@ Set-ItemProperty $key DefaultUserName $username
 Set-ItemProperty $key DefaultPassword $password
 Set-ItemProperty $key DefaultDomainName 'specterpops.local' 
 
-NET LOCALGROUP "Remote Desktop Users" specterpops.local\$username /ADD
+NET LOCALGROUP "Remote Desktop Users" "specterpops.local\Domain Users" /ADD
