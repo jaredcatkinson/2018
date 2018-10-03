@@ -8,15 +8,15 @@ $run = 'HKLM:\\\\SOFTWARE\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run'
 
 if(Test-Path C:\Users\Public\AdminActions\usersim.exe)
 { 
-    Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONSTART /tr "cd C:\Users\Public\AdminActions && usersim.exe" /f"
+    Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONLOGON /tr "cd C:\Users\Public\AdminActions && usersim.exe" /f"
 }
 elseif(Test-Path C:\Users\Public\MarketingActions\usersim.exe)
 {
-    Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONSTART /tr "cd C:\Users\Public\MarketingActions && usersim.exe" /f"
+    Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONLOGON /tr "cd C:\Users\Public\MarketingActions && usersim.exe" /f"
 }
 elseif(Test-Path C:\Users\Public\usersim\usersim.exe)
 {
-    Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONSTART /tr "C:\Users\Public\usersim && usersim.exe" /f"
+    Set-ItemProperty $run Start_Admin_Sim_Browsing "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONLOGON /tr "C:\Users\Public\usersim && usersim.exe" /f"
 }
 
 "Setting Auto Logon User" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
