@@ -18,7 +18,7 @@ elseif(Test-Path C:\Users\Public\MarketingActions\usersim.exe)
 }
 elseif(Test-Path C:\Users\Public\usersim\usersim.exe)
 {
-    Set-ItemProperty $run Start_User_Sim "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONLOGON /tr `"C:\Users\Public\usersim && usersim.exe`" /f"
+    Set-ItemProperty $run Start_User_Sim "schtasks /create /ru specterpops\$($username) /rp $($password) /it /tn UserSimulation /sc ONLOGON /tr C:\Users\Public\usersim\usersim.exe /V1 /f"
 }
 "[+] Setting up User Simulation" | Out-File -FilePath C:\Users\Public\usersim.txt -Append
 
